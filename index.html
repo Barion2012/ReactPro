@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MyShell</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style type="text/css">
 
         a.navbar-brand {
@@ -25,10 +25,10 @@
             border-color: #1861ac
         }
 
-        .btn-primary:focus {
-            box-shadow: none;
-            outline: black auto 1px
-        }
+            .btn-primary:focus {
+                box-shadow: none;
+                outline: black auto 1px
+            }
 
         .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
             color: #fff;
@@ -104,10 +104,9 @@
             border-radius: 10px
         }
 
-        #resultAlert{
-            height:50px
+        #resultAlert {
+            height: 50px
         }
-
     </style>
 
 </head>
@@ -167,7 +166,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-        <!--//--><![CDATA[//><!--
+        <!--    //--><![CDATA[//><!--
 
         ((...args) => {
 
@@ -189,7 +188,7 @@
 
             form.addEventListener('submit', async e => {
 
-                resultAlert.innerHTML='';
+                resultAlert.innerHTML = '';
                 const validity = form.checkValidity();
 
                 if (!validity) {
@@ -200,60 +199,19 @@
                 form.classList.add('was-validated');
 
                 if (validity) {
-                    let param = new FormData(form);
-                    console.log(param.get('UserName'));
-                    console.log(param.get('Password'));
-
-
-                    const body = `<?xml version="1.0" encoding="UTF-8" ?>
-<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:ns1="urn:ICUTech.Intf-IICUTech" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:enc="http://www.w3.org/2003/05/soap-encoding"><env:Body><ns1:Login env:encodingStyle="http://www.w3.org/2003/05/soap-encoding"><UserName xsi:type="xsd:string">bs@ru</UserName><Password xsi:type="xsd:string">123</Password><IPs xsi:type="xsd:string"></IPs></ns1:Login></env:Body></env:Envelope>`;
-                    console.log(body.length);
-/*
-                    const h = new Headers();
-                    h.append('Content-Type', 'text/xml;charset=UTF-8');
-                    h.append('SOAPAction', 'urn:ICUTech.Intf-IICUTech#Login');
-                    h.append('Content-Length', body.length);
-                    h.append('Connection', 'Keep-Alive');
-
-                    h.append('Host', 'isapi.icu-tech.com');
-                    h.append('Expect', '100-continue');
-*/
+                    let param = new URLSearchParams(new FormData(form));
+                    param.append('IPs', '');
+                    let data = decodeURIComponent(param.toString());
+                    data = `func=Login&params=${encodeURIComponent(data)}`;
+                    param = new URLSearchParams(data);
 
                     try {
 
-                        const req = await fetch(URI, {
-                            body: body
-                            , headers: {
-                                'Content-Type': 'text/xml;charset=UTF-8',
-                                'SOAPAction': 'urn:ICUTech.Intf-IICUTech#Login',
-                                'Content-Length': body.length,
-                                'Connection': 'Keep-Alive',
-                                'Host': 'isapi.icu-tech.com',
-                                'Expect': '100-continue',
-                                'Origin': 'http://normal-website.com'
-                            }
-                            , method: 'POST'
-                            , mode: 'cors'
-                        });
-
-                        console.log(await req)
-                    }
-                    catch (ex) {
-                        console.log(ex);
-                    }
-                }
-
-/*
-                    try {
-
-                        
                         const req = await fetch(URI, {
                             body: param
                             , headers: { 'Content-Type': CT }
                             , method: 'POST'
                         });
-
-
 
                         let res = await req.json();
                         res = JSON.parse(res.ret);
@@ -269,7 +227,7 @@
                             }
                         }
                         else {
-                            alert(`Hello, Mr. ${msg===''?'X':msg}!`, 'success');
+                            alert(`Hello, Mr. ${msg === '' ? 'X' : msg}!`, 'success');
                         }
 
                     }
@@ -283,17 +241,16 @@
                         form.reset();
                     }
                 }
-*/
 
             }, false)
-            
+
         })(
             (id) => document.querySelector(id),
-            'http://isapi.icu-tech.com/icutech-test.dll/soap/IICUTech',
+            'http://isapi.mekashron.com/soapclient/soapclient.php?URL=http://isapi.icu-tech.com/icutech-test.dll%2Fwsdl%2FIICUTech',
             'application/x-www-form-urlencoded'
         )
 
-        //--><!]]>
+            //--><!]]>
     </script>
 
 </body>
