@@ -1,0 +1,7 @@
+F:\MyFactory\Tests\publish\ReactPro\HelloApi\obj\Release\net5.0\PubTmp\Out\HelloApi.exe
+F:\MyFactory\Tests\publish\ReactPro\HelloApi\obj\Release\net5.0\PubTmp\Out\appsettings.Development.json
+F:\MyFactory\Tests\publish\ReactPro\HelloApi\obj\Release\net5.0\PubTmp\Out\appsettings.json
+F:\MyFactory\Tests\publish\ReactPro\HelloApi\obj\Release\net5.0\PubTmp\Out\HelloApi.dll
+F:\MyFactory\Tests\publish\ReactPro\HelloApi\obj\Release\net5.0\PubTmp\Out\HelloApi.deps.json
+F:\MyFactory\Tests\publish\ReactPro\HelloApi\obj\Release\net5.0\PubTmp\Out\HelloApi.runtimeconfig.json
+F:\MyFactory\Tests\publish\ReactPro\HelloApi\obj\Release\net5.0\PubTmp\Out\HelloApi.pdb
