@@ -27,6 +27,9 @@ namespace HelloApi
         {
 
             services.AddControllers();
+            
+            
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,10 +40,13 @@ namespace HelloApi
                 app.UseDeveloperExceptionPage();
             }
 
+            
+
        //     app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

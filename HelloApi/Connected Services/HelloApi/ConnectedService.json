@@ -1,0 +1,18 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "http://isapi.icu-tech.com/icutech-test.dll/wsdl/IICUTech"
+    ],
+    "collectionTypes": [
+      "System.Collections.Generic.Dictionary`2",
+      "System.Collections.ObjectModel.ObservableCollection`1"
+    ],
+    "internalTypeAccess": true,
+    "namespaceMappings": [
+      "*, HelloApi"
+    ],
+    "sync": true,
+    "targetFramework": "net5.0",
+    "typeReuseMode": "All"
+  }
+}
