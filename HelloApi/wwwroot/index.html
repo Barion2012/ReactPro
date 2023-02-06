@@ -215,9 +215,9 @@
                         const res = await resp.json();
 
                         let msg = res.firstName;
-                        if (msg === undefined) {
+                        if (msg == null) {
                             msg = res.resultMessage;
-                            if (msg === undefined) {
+                            if (msg == null) {
                                 throw 'Unknown error';
                             }
                             else {

@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+
+  HelloApi:
+    image: helloapi
+    ports:
+      - 48880:80
