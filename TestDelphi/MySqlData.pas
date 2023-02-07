@@ -7,6 +7,7 @@ uses
   , Vcl.Forms
   , Data.DB  ,mySQLDbTables;
 
+
 type
   TTestDB = class(TDataModule)
     TestDB: TMySQLDatabase;
@@ -22,9 +23,9 @@ type
     CallbacksTableisExtracted: TIntegerField;
     Destructor  Destroy; override;
   public
-    function Test():string;
-    function Connect():boolean;
+    function Test():boolean; inline;
   private
+    function Connect():boolean;
     procedure Disconn();
   end;
 
@@ -67,27 +68,8 @@ end;
 
 
 
-function TTestDB.Test():string;
-
+function TTestDB.Test():boolean;
 begin
-  if Connect() then begin
-
-    if CallbacksTable.FindFirst then begin
-        Result:= Format('There is %d unconfirmed callbacks in the moment.',
-          [CallbacksTable.RecordCount]);
-        {CallbacksTable.Edit;
-        CallbacksTableConfirmed.Value:=1;
-        CallbacksTable.Post;}
-    end
-    else begin
-        Result:= 'There isn''t not unconfirmed callbacks in the moment.'
-
-    end;
-
-  end;
-
+    Result:=Connect AND CallbacksTable.FindFirst;
 end;
-
-
-
 end.
